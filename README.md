@@ -2,6 +2,9 @@
 
 一个**零依赖、零构建**的深色霓虹个人主页。纯手写 HTML / CSS / JavaScript，打开就能用。
 
+**线上地址**：https://eyeofyan.github.io/  
+**仓库**：https://github.com/eyeofyan/eyeofyan.github.io
+
 - 单页结构：首页 Hero / 关于我 / 技能树 / 经历 / 联系方式
 - 终端打字机介绍、鼠标光晕、卡片聚光、滚动显现
 - 完整响应式：桌面、平板、手机
@@ -52,8 +55,8 @@ personal-site/
 | 内容 | 当前位置 | 说明 |
 | --- | --- | --- |
 | 邮箱 `hi@yan.dev` | `index.html` 的 `mailto:`、`data-email`、侧边栏；`main.js` 的兜底值 | 改成你自己的邮箱，建议全部替换 |
-| GitHub / X 链接 | `index.html` 底部 `social-row` | 目前指向官网首页，换成你的主页 |
-| 名字 `yan` | 标题、logo、Hero、终端、页脚 | 全局搜索替换 |
+| GitHub 链接 | `index.html` 底部 `social-row` | 已指向 `github.com/eyeofyan`，源码链接指向当前仓库 |
+| 名字 `yan` | 标题、logo、Hero、终端、页脚 | GitHub 用户名是 `eyeofyan`，站内仍使用 `yan`，可自行调整 |
 | 学校 / 经历 / 技能 | `index.html` 的 About、Skills、Experience | 已按「广西机电职业技术学院 · 信息技术安全 · 专科在读」填写，如有变化请修改 |
 | 缓存命中率 `6%` | `index.html` 中 3 处 `6%` | 彩蛋数字，可改成任意值 |
 | 标题与描述 | `index.html` 的 `<title>`、`meta description`、`og:*` | 影响分享卡片与搜索摘要 |
@@ -113,11 +116,12 @@ const terminalScript = [
 
 这是纯静态站点，把 `personal-site` 目录里的文件传到任意静态托管即可，无需构建命令。
 
-**GitHub Pages**
+**GitHub Pages（当前已部署）**
 
-1. 新建仓库，把文件推到仓库根目录。
-2. Settings → Pages → Source 选择 `Deploy from a branch`，分支选 `main` / 根目录。
-3. 等一分钟，访问 `https://<用户名>.github.io/<仓库名>/`。
+- 线上地址：https://eyeofyan.github.io/
+- 仓库：https://github.com/eyeofyan/eyeofyan.github.io
+- Pages Source：`main` 分支 / 根目录
+- 以后更新：修改本地文件后重新上传，或直接在 GitHub 网页里编辑文件
 
 **Netlify / Vercel / Cloudflare Pages**
 
