@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>yan — 信息技术安全 / 缓存垃圾</title>
+  <meta name="description" content="yan 的个人网站：广西机电职业技术学院信息技术安全专业在读（专科），关注 Web 安全、CTF 与各种让系统「意外」运行的方式。">
+  <meta name="theme-color" content="#05060a">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="yan — 信息技术安全 / 缓存垃圾">
+  <meta property="og:description" content="广西机电职业技术学院信息技术安全专业在读（专科），关注 Web 安全、CTF 与各种让系统「意外」运行的方式。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="yan，回到首页">yan<span class="brand-cursor">_</span></a>
+
+      <nav class="nav" id="nav" aria-label="主导航">
+        <a href="#top" class="is-active" aria-current="location">首页</a>
+        <a href="#about">关于</a>
+        <a href="#skills">技能</a>
+        <a href="#experience">经历</a>
+        <a href="#contact">联系</a>
+      </nav>
+
+      <a class="btn btn-ghost header-cta" href="#contact">联系我 <span class="arrow">↗</span></a>
+
+      <button class="menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="aurora aurora-1" aria-hidden="true"></div>
+      <div class="aurora aurora-2" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow hero-anim" style="--delay: 0ms">
+            <span class="pulse" aria-hidden="true"></span>
+            信息技术安全 · INFORMATION SECURITY
+          </p>
+
+          <h1 class="hero-title hero-anim" style="--delay: 90ms" aria-label="yan">
+            yan<span class="title-cursor" aria-hidden="true"></span>
+          </h1>
+
+          <p class="hero-roles hero-anim" style="--delay: 180ms">
+            信息技术安全在读 <span class="slash">/</span> 缓存垃圾 <span class="slash">/</span> CTF 坐牢选手
+          </p>
+
+          <p class="hero-sub hero-anim" style="--delay: 260ms">
+            我在安全和代码的夹缝里折腾：喜欢在 Web 里找洞，在 CTF 里坐牢，在深夜写一些只有自己用的小工具。
+            目前正在把「缓存垃圾」这份职业做到极致——占着内存，偶尔命中。
+          </p>
+
+          <div class="hero-actions hero-anim" style="--delay: 340ms">
+            <a class="btn btn-primary" href="#about">认识我 <span class="btn-icon">↓</span></a>
+            <a class="btn btn-ghost" href="#contact">来封邮件 <span class="arrow">↗</span></a>
+          </div>
+
+          <ul class="hero-meta hero-anim" style="--delay: 420ms" aria-label="关键词">
+            <li>WEB SECURITY</li>
+            <li>CTF</li>
+            <li>PYTHON</li>
+            <li>ALWAYS LOADING</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual hero-anim" style="--delay: 260ms">
+          <div class="terminal-wrap">
+            <div class="float-chip chip-1" aria-hidden="true">ACCESS GRANTED</div>
+            <div class="terminal" aria-label="终端风格的自我介绍">
+              <div class="terminal-bar">
+                <div class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+                <span class="terminal-title">guest@yan — zsh</span>
+                <span class="terminal-badge" aria-hidden="true">~</span>
+              </div>
+              <div class="terminal-body" id="terminal-body">
+                <div class="t-line"><span class="t-prompt">guest@yan</span><span class="t-dim">:~$</span> <span class="t-cmd">whoami</span></div>
+                <div class="t-line t-out"><span class="t-name">yan</span></div>
+                <div class="t-line"><span class="t-prompt">guest@yan</span><span class="t-dim">:~$</span> <span class="t-cmd">cat ~/.profile</span></div>
+                <div class="t-line t-out"><span class="t-key">major</span><span class="t-dim"> : </span>信息技术安全</div>
+                <div class="t-line t-out"><span class="t-key">focus</span><span class="t-dim"> : </span>web security · ctf</div>
+                <div class="t-line t-out"><span class="t-key">state</span><span class="t-dim"> : </span><span class="t-warn">cache_garbage</span> <span class="t-dim">(still running)</span></div>
+                <div class="t-line"><span class="t-prompt">guest@yan</span><span class="t-dim">:~$</span> <span class="t-cmd">cat ~/.motto</span></div>
+                <div class="t-line t-out"><span class="t-ok">"占着内存，偶尔命中。"</span></div>
+                <div class="t-line"><span class="t-prompt">guest@yan</span><span class="t-dim">:~$</span> <span class="t-cursor" aria-hidden="true"></span></div>
+              </div>
+            </div>
+            <div class="float-chip chip-2" aria-hidden="true">CACHE HIT: 6%</div>
+          </div>
+        </div>
+      </div>
+
+      <a class="scroll-hint" href="#about" aria-label="向下滚动到关于我">
+        <span class="scroll-line" aria-hidden="true"></span>
+        <span>SCROLL</span>
+      </a>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>WEB SECURITY</span><span class="sep">◆</span>
+          <span>CTF</span><span class="sep">◆</span>
+          <span>PENETRATION TESTING</span><span class="sep">◆</span>
+          <span>PYTHON</span><span class="sep">◆</span>
+          <span>CODE AUDIT</span><span class="sep">◆</span>
+          <span>LINUX</span><span class="sep">◆</span>
+          <span>CACHE GARBAGE</span><span class="sep">◆</span>
+          <span>STILL LOADING</span><span class="sep">◆</span>
+        </div>
+        <div class="marquee-group">
+          <span>WEB SECURITY</span><span class="sep">◆</span>
+          <span>CTF</span><span class="sep">◆</span>
+          <span>PENETRATION TESTING</span><span class="sep">◆</span>
+          <span>PYTHON</span><span class="sep">◆</span>
+          <span>CODE AUDIT</span><span class="sep">◆</span>
+          <span>LINUX</span><span class="sep">◆</span>
+          <span>CACHE GARBAGE</span><span class="sep">◆</span>
+          <span>STILL LOADING</span><span class="sep">◆</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker"><span>01</span> / ABOUT</p>
+            <h2 class="h2">关于我</h2>
+          </div>
+          <span class="section-num" aria-hidden="true">01</span>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p class="lead reveal">
+              一块还在<span class="grad-text">运行</span>的缓存垃圾。
+            </p>
+            <p class="about-edu reveal" style="--d: 60ms">
+              广西机电职业技术学院 <span>·</span> 信息技术安全 <span>·</span> 专科在读
+            </p>
+            <p class="reveal" style="--d: 80ms">
+              我是 yan，就读于广西机电职业技术学院信息技术安全专业（专科）。白天上课，晚上泡在靶场和 CTF 里，研究 Web 漏洞、代码审计，以及各种「这也能行？」的绕过姿势。
+            </p>
+            <p class="reveal" style="--d: 140ms">
+              我相信好的安全不是堆工具，而是理解系统为什么会坏。所以我也写代码：用 Python 造轮子，用 JS 折腾网页，偶尔把踩过的坑写成笔记——虽然大部分坑，第二天还会再踩一次。
+            </p>
+            <p class="reveal" style="--d: 200ms">
+              不擅长寒暄，但很乐意聊漏洞、聊工具、聊怎么把一个系统拆开看看（在自己有权限的前提下）。
+            </p>
+
+            <div class="about-sign reveal" style="--d: 260ms">
+              <span class="about-sign-line" aria-hidden="true"></span>
+              <span>stay curious, stay paranoid.</span>
+            </div>
+          </div>
+
+          <aside class="snapshot reveal spotlight" style="--d: 160ms" aria-label="个人快照">
+            <div class="snapshot-head">
+              <span class="snapshot-title">SNAPSHOT</span>
+              <span class="live"><span class="live-dot" aria-hidden="true"></span>RUNNING</span>
+            </div>
+            <dl class="snapshot-list">
+              <div class="snapshot-row"><dt>name</dt><dd>yan</dd></div>
+              <div class="snapshot-row"><dt>school</dt><dd>广西机电职业技术学院</dd></div>
+              <div class="snapshot-row"><dt>major</dt><dd>信息技术安全 · 专科</dd></div>
+              <div class="snapshot-row"><dt>focus</dt><dd>web security · ctf</dd></div>
+              <div class="snapshot-row"><dt>state</dt><dd class="warn">cache_garbage.exe</dd></div>
+              <div class="snapshot-row"><dt>timezone</dt><dd>UTC+8</dd></div>
+              <div class="snapshot-row"><dt>status</dt><dd class="ok">still running</dd></div>
+            </dl>
+            <div class="cache">
+              <div class="cache-top"><span>CACHE HIT RATE</span><span>6%</span></div>
+              <div class="meter" role="img" aria-label="缓存命中率 6%"><span></span></div>
+              <p class="cache-note">偶尔命中，已经很努力了。</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker"><span>02</span> / SKILLS</p>
+            <h2 class="h2">技能树</h2>
+          </div>
+          <span class="section-num" aria-hidden="true">02</span>
+        </div>
+
+        <p class="section-intro reveal">
+          目前点亮的几根分支。没有满级，也还没洗点。
+        </p>
+
+        <div class="skills-grid">
+          <article class="skill-card reveal spotlight" style="--d: 0ms">
+            <div class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <h3>安全</h3>
+            <p class="skill-sub">SECURITY</p>
+            <ul class="tags">
+              <li class="tag is-core">Web 渗透测试</li>
+              <li class="tag is-core">漏洞挖掘</li>
+              <li class="tag is-core">代码审计</li>
+              <li class="tag">CTF</li>
+              <li class="tag">内网渗透</li>
+              <li class="tag">安全工具开发</li>
+            </ul>
+          </article>
+
+          <article class="skill-card reveal spotlight" style="--d: 90ms">
+            <div class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <h3>开发</h3>
+            <p class="skill-sub">DEVELOPMENT</p>
+            <ul class="tags">
+              <li class="tag is-core">Python</li>
+              <li class="tag is-core">JavaScript</li>
+              <li class="tag">HTML / CSS</li>
+              <li class="tag">SQL</li>
+              <li class="tag">Bash</li>
+              <li class="tag">Git</li>
+            </ul>
+          </article>
+
+          <article class="skill-card reveal spotlight" style="--d: 180ms">
+            <div class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5"/>
+                <line x1="12" y1="19" x2="20" y2="19"/>
+              </svg>
+            </div>
+            <h3>工具</h3>
+            <p class="skill-sub">TOOLKIT</p>
+            <ul class="tags">
+              <li class="tag is-core">Burp Suite</li>
+              <li class="tag is-core">Kali Linux</li>
+              <li class="tag">Nmap</li>
+              <li class="tag">Wireshark</li>
+              <li class="tag">Docker</li>
+              <li class="tag">VS Code</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="skill-note reveal">// 技能树持续加点中，以上只是当前存档。</p>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker"><span>03</span> / EXPERIENCE</p>
+            <h2 class="h2">经历</h2>
+          </div>
+          <span class="section-num" aria-hidden="true">03</span>
+        </div>
+
+        <p class="section-intro reveal">
+          没有太多头衔，只有一些正在进行时。
+        </p>
+
+        <div class="timeline">
+          <article class="t-item reveal">
+            <span class="t-dot" aria-hidden="true"></span>
+            <div class="t-card">
+              <div class="t-top">
+                <h3 class="t-role">信息技术安全 · 专科在读</h3>
+                <span class="t-time">NOW</span>
+              </div>
+              <p class="t-org">// 广西机电职业技术学院 · EDUCATION</p>
+              <p class="t-desc">系统学习网络协议、操作系统、密码学与 Web 安全。比起背概念，更喜欢在靶场里把理论打碎，再自己拼回去。</p>
+              <ul class="t-tags">
+                <li>网络协议</li><li>操作系统</li><li>密码学</li><li>Web 安全</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="t-item reveal" style="--d: 80ms">
+            <span class="t-dot" aria-hidden="true"></span>
+            <div class="t-card">
+              <div class="t-top">
+                <h3 class="t-role">CTF &amp; 靶场</h3>
+                <span class="t-time">ONGOING</span>
+              </div>
+              <p class="t-org">// PRACTICE</p>
+              <p class="t-desc">活跃于校内外 CTF 和在线靶场，主攻 Web 与 Misc。习惯从源码、日志和流量里找答案，也习惯在比赛最后一小时突然开窍。</p>
+              <ul class="t-tags">
+                <li>Web</li><li>Misc</li><li>Burp Suite</li><li>流量分析</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="t-item reveal" style="--d: 160ms">
+            <span class="t-dot" aria-hidden="true"></span>
+            <div class="t-card">
+              <div class="t-top">
+                <h3 class="t-role">安全小工具</h3>
+                <span class="t-time">SIDE PROJECT</span>
+              </div>
+              <p class="t-org">// BUILDING</p>
+              <p class="t-desc">用 Python / Bash 写端口扫描、目录探测、日志分析之类的脚本。代码不一定优雅，但一定能跑——至少在我电脑上。</p>
+              <ul class="t-tags">
+                <li>Python</li><li>Bash</li><li>Linux</li><li>自动化</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="t-item reveal" style="--d: 240ms">
+            <span class="t-dot" aria-hidden="true"></span>
+            <div class="t-card">
+              <div class="t-top">
+                <h3 class="t-role">从改模板开始</h3>
+                <span class="t-time">ORIGIN</span>
+              </div>
+              <p class="t-org">// THE BEGINNING</p>
+              <p class="t-desc">最早只是想给博客换个皮肤，后来开始读源码，再后来就掉进安全这个坑里。现在暂时没有爬出来的打算。</p>
+              <ul class="t-tags">
+                <li>HTML</li><li>CSS</li><li>好奇心</li><li>熬夜</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-card reveal spotlight">
+          <div class="contact-glow" aria-hidden="true"></div>
+          <p class="kicker"><span>04</span> / CONTACT</p>
+          <h2 class="contact-heading">有洞，或者有意思的事，<br>都可以找我。</h2>
+          <p class="contact-sub">安全交流、项目合作、CTF 组队，或者只是想吐槽一下今天的课——都欢迎。邮件通常比私信更快。</p>
+
+          <div class="email-row">
+            <a class="email-link" href="mailto:hi@yan.dev">hi@yan.dev <span class="arrow">↗</span></a>
+            <button class="copy-btn" type="button" id="copy-email" data-email="hi@yan.dev">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              复制邮箱
+            </button>
+          </div>
+
+          <div class="social-row">
+            <a class="social-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow">↗</span></a>
+            <a class="social-link" href="https://x.com/" target="_blank" rel="noopener noreferrer">X / Twitter <span class="arrow">↗</span></a>
+            <a class="social-link" href="mailto:hi@yan.dev">Email <span class="arrow">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">© <span id="year">2026</span> yan · 手写 HTML / CSS / JS，没有框架，也没有缓存。</p>
+      <div class="footer-right">
+        <span class="footer-status"><span class="live-dot" aria-hidden="true"></span>SYSTEM ONLINE</span>
+        <a class="back-top" href="#top">回到顶部 ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="side-email" href="mailto:hi@yan.dev" aria-label="发送邮件到 hi@yan.dev">hi@yan.dev</a>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/main.js" defer></script>
+</body>
+</html>
