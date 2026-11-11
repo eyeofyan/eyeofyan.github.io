@@ -16,10 +16,47 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var introForced = new URLSearchParams(location.search).has('intro');
+      var introSeen = sessionStorage.getItem('yan-intro-seen') === '1';
+      document.documentElement.classList.add(introSeen && !introForced ? 'intro-seen' : 'intro-active');
+    } catch (error) {
+      document.documentElement.classList.add('intro-active');
+    }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!-- ============ INTRO ============ -->
+  <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="开场动画">
+    <video class="intro-video" id="intro-video" src="assets/video/intro.mp4" poster="assets/video/poster.jpg" muted playsinline preload="auto" aria-hidden="true"></video>
+    <div class="intro-wash" aria-hidden="true"></div>
+    <div class="intro-scan" aria-hidden="true"></div>
+
+    <div class="intro-top">
+      <a class="intro-brand" href="#top" aria-hidden="true" tabindex="-1">yan<span>_</span></a>
+      <span class="intro-meta">YAN / PORTFOLIO — 2026</span>
+      <button class="intro-skip" type="button" id="intro-skip">跳过 <span>SKIP</span> →</button>
+    </div>
+
+    <div class="intro-main">
+      <p class="intro-kicker">PAPER PLANE / 001</p>
+      <h1 class="intro-title">yan<span>_</span></h1>
+      <p class="intro-tagline">把缓存垃圾，折成纸飞机。</p>
+    </div>
+
+    <div class="intro-bottom">
+      <div class="intro-progress" aria-hidden="true"><span id="intro-progress"></span></div>
+      <div class="intro-bottom-row">
+        <span id="intro-time">00:00</span>
+        <span class="intro-note">广西机电职业技术学院 · 信息技术安全</span>
+        <button class="intro-sound" type="button" id="intro-sound" aria-pressed="false">声音 OFF</button>
+      </div>
+    </div>
+  </div>
 
   <div class="noise" aria-hidden="true"></div>
   <div class="cursor-glow" aria-hidden="true"></div>
@@ -34,6 +71,8 @@
         <a href="#about">关于</a>
         <a href="#skills">技能</a>
         <a href="#experience">经历</a>
+        <a href="#music">音乐</a>
+        <a href="#guestbook">留言</a>
         <a href="#contact">联系</a>
       </nav>
 
@@ -98,7 +137,7 @@
                 <div class="t-line"><span class="t-prompt">guest@yan</span><span class="t-dim">:~$</span> <span class="t-cmd">whoami</span></div>
                 <div class="t-line t-out"><span class="t-name">yan</span></div>
                 <div class="t-line"><span class="t-prompt">guest@yan</span><span class="t-dim">:~$</span> <span class="t-cmd">cat ~/.profile</span></div>
-                <div class="t-line t-out"><span class="t-key">major</span><span class="t-dim"> : </span>信息技术安全</div>
+                <div class="t-line t-out"><span class="t-key">major</span><span class="t-dim"> : </span>信息安全技术应用</div>
                 <div class="t-line t-out"><span class="t-key">focus</span><span class="t-dim"> : </span>web security · ctf</div>
                 <div class="t-line t-out"><span class="t-key">state</span><span class="t-dim"> : </span><span class="t-warn">cache_garbage</span> <span class="t-dim">(still running)</span></div>
                 <div class="t-line"><span class="t-prompt">guest@yan</span><span class="t-dim">:~$</span> <span class="t-cmd">cat ~/.motto</span></div>
@@ -160,10 +199,10 @@
               一块还在<span class="grad-text">运行</span>的缓存垃圾。
             </p>
             <p class="about-edu reveal" style="--d: 60ms">
-              广西机电职业技术学院 <span>·</span> 信息技术安全 <span>·</span> 专科在读
+              广西机电职业技术学院 <span>·</span> 信息安全技术应用 <span>·</span> 专科在读
             </p>
             <p class="reveal" style="--d: 80ms">
-              我是 yan，就读于广西机电职业技术学院信息技术安全专业（专科）。白天上课，晚上泡在靶场和 CTF 里，研究 Web 漏洞、代码审计，以及各种「这也能行？」的绕过姿势。
+              我是 yan，就读于广西机电职业技术学院信息安全技术应用专业（专科）。白天上课，晚上泡在靶场和 CTF 里，研究 Web 漏洞、代码审计，以及各种「这也能行？」的绕过姿势。
             </p>
             <p class="reveal" style="--d: 140ms">
               我相信好的安全不是堆工具，而是理解系统为什么会坏。所以我也写代码：用 Python 造轮子，用 JS 折腾网页，偶尔把踩过的坑写成笔记——虽然大部分坑，第二天还会再踩一次。
@@ -359,12 +398,144 @@
       </div>
     </section>
 
+    <!-- ============ MUSIC ============ -->
+    <section class="section music" id="music">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker"><span>04</span> / MUSIC</p>
+            <h2 class="h2">音乐墙</h2>
+          </div>
+          <span class="section-num" aria-hidden="true">04</span>
+        </div>
+
+        <p class="section-intro reveal">写代码、打靶、发呆时的背景音。十首歌，一面唱片墙。</p>
+
+        <div class="music-stage">
+          <div class="music-visual reveal" id="music-visual" data-track="aimer-kataomoi">
+            <div class="album-art album-wall">
+              <img src="assets/music-wall.jpg" width="1080" height="1506" alt="一面贴满唱片封面的唱片墙" loading="lazy">
+              <span class="album-wall-shade" aria-hidden="true"></span>
+              <span class="album-wall-label">YAN / RECORD WALL — 2026</span>
+            </div>
+
+            <div class="music-meta">
+              <p class="music-status"><span class="live-dot" aria-hidden="true"></span><span id="music-status-text">READY TO PLAY</span></p>
+              <h3 class="music-title" id="music-title">カタオモイ</h3>
+              <p class="music-desc" id="music-desc">Aimer</p>
+            </div>
+          </div>
+
+          <div class="music-panel reveal" style="--d: 100ms">
+            <div class="music-controls">
+              <button class="music-btn" id="music-prev" type="button" aria-label="上一首">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M18 6l-9 6 9 6z"/></svg>
+              </button>
+              <button class="music-play" id="music-toggle" type="button" aria-label="播放">
+                <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+              </button>
+              <button class="music-btn" id="music-next" type="button" aria-label="下一首">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M6 6l9 6-9 6z"/></svg>
+              </button>
+
+              <div class="music-progress-wrap">
+                <input class="music-progress" id="music-progress" type="range" min="0" max="1000" value="0" aria-label="播放进度">
+                <div class="music-time"><span id="music-current">00:00</span><span id="music-duration">00:00</span></div>
+              </div>
+
+              <button class="music-btn music-mute" id="music-mute" type="button" aria-label="静音">
+                <svg class="icon-volume" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zM16 8a5 5 0 0 1 0 8M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+                <svg class="icon-muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zM17 9l4 6M21 9l-4 6"/></svg>
+              </button>
+            </div>
+
+            <p class="music-list-label">PLAYLIST / 10</p>
+            <div class="track-list" id="track-list" aria-label="播放列表"></div>
+
+            <div class="music-deco" aria-hidden="true">
+              <div class="music-wave">
+                <i style="--h: 22%"></i><i style="--h: 48%"></i><i style="--h: 34%"></i><i style="--h: 62%"></i>
+                <i style="--h: 40%"></i><i style="--h: 78%"></i><i style="--h: 52%"></i><i style="--h: 30%"></i>
+                <i style="--h: 68%"></i><i style="--h: 44%"></i><i style="--h: 84%"></i><i style="--h: 38%"></i>
+                <i style="--h: 56%"></i><i style="--h: 26%"></i><i style="--h: 70%"></i><i style="--h: 46%"></i>
+              </div>
+              <div class="music-deco-meta"><span>YAN / AUDIO</span><span>LOOP MODE</span></div>
+            </div>
+
+            <p class="music-note">// 私人歌单 / 2026 · 请支持正版。</p>
+          </div>
+        </div>
+
+        <audio id="music-audio" preload="metadata"></audio>
+      </div>
+    </section>
+
+    <!-- ============ GUESTBOOK ============ -->
+    <section class="section guestbook" id="guestbook">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker"><span>05</span> / GUESTBOOK</p>
+            <h2 class="h2">留言墙</h2>
+          </div>
+          <span class="section-num" aria-hidden="true">05</span>
+        </div>
+
+        <p class="section-intro reveal">把想说的话折成纸飞机。留言通过 GitHub Issues 保存，可以一直留在这里。</p>
+
+        <div class="guestbook-layout">
+          <aside class="guestbook-form-card reveal">
+            <div class="gb-form-head">
+              <p class="kicker">LEAVE A NOTE</p>
+              <span class="gb-count" id="gb-count">0 / 200</span>
+            </div>
+
+            <form id="guestbook-form">
+              <label class="field">
+                <span>怎么称呼你</span>
+                <input id="gb-name" name="name" type="text" maxlength="20" autocomplete="nickname" placeholder="匿名也可以">
+              </label>
+              <label class="field">
+                <span>想说的话</span>
+                <textarea id="gb-message" name="message" rows="5" maxlength="200" required placeholder="打个招呼，或者留下一个只有你懂的梗。"></textarea>
+              </label>
+              <button class="btn btn-primary gb-submit" type="submit">发布到留言墙 <span class="arrow">↗</span></button>
+              <p class="gb-hint">提交会打开 GitHub 新建 Issue，需要登录 GitHub。发布后回到这里，点「刷新」就能看到。</p>
+            </form>
+          </aside>
+
+          <div class="guestbook-wall reveal" style="--d: 100ms">
+            <div class="gb-wall-head">
+              <span class="gb-wall-label"><span class="live-dot" aria-hidden="true"></span>最近留言</span>
+              <button class="gb-refresh" id="gb-refresh" type="button">刷新 ↻</button>
+            </div>
+
+            <div class="gb-messages" id="gb-messages" aria-live="polite">
+              <article class="gb-card gb-pinned">
+                <div class="gb-card-head">
+                  <span class="gb-avatar gb-avatar-yan" aria-hidden="true">Y</span>
+                  <div class="gb-who">
+                    <p class="gb-name">yan <span class="gb-badge">置顶</span></p>
+                    <p class="gb-date">FROM THE OWNER</p>
+                  </div>
+                </div>
+                <p class="gb-text">这里是留言墙。留下你的名字和一句话，或者只是路过打个招呼。别客气，反正缓存也会被清空。</p>
+              </article>
+            </div>
+
+            <p class="gb-status" id="gb-status" aria-live="polite">正在加载留言…</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
     <section class="section contact" id="contact">
       <div class="container">
         <div class="contact-card reveal spotlight">
           <div class="contact-glow" aria-hidden="true"></div>
-          <p class="kicker"><span>04</span> / CONTACT</p>
+          <p class="kicker"><span>06</span> / CONTACT</p>
           <h2 class="contact-heading">有洞，或者有意思的事，<br>都可以找我。</h2>
           <p class="contact-sub">安全交流、项目合作、CTF 组队，或者只是想吐槽一下今天的课——都欢迎。邮件通常比私信更快。</p>
 
