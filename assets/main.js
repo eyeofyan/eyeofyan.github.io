@@ -348,7 +348,7 @@
     let copyResetTimer = null;
 
     copyButton.addEventListener("click", async () => {
-      const email = copyButton.getAttribute("data-email") || "hi@yan.dev";
+      const email = copyButton.getAttribute("data-email") || "3059673932@qq.com";
       let copied = false;
 
       if (navigator.clipboard && window.isSecureContext) {
