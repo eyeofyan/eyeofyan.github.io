@@ -69,14 +69,14 @@ personal-site/
 
 | 内容 | 当前位置 | 说明 |
 | --- | --- | --- |
-| 邮箱 `hi@yan.dev` | `index.html` 的 `mailto:`、`data-email`、侧边栏；`main.js` 的兜底值 | 改成你自己的邮箱，建议全部替换 |
+| 邮箱 `3059673932@qq.com` | `index.html` 的 `mailto:`、`data-email`、侧边栏；`main.js` 的兜底值 | 已设置为你的真实邮箱，如需更换请全部替换 |
 | GitHub 链接 | `index.html` 底部 `social-row` | 已指向 `github.com/eyeofyan`，源码链接指向当前仓库 |
 | 名字 `yan` | 标题、logo、Hero、终端、页脚 | GitHub 用户名是 `eyeofyan`，站内仍使用 `yan`，可自行调整 |
 | 学校 / 经历 / 技能 | `index.html` 的 About、Skills、Experience | 已按「广西机电职业技术学院 · 信息技术安全 · 专科在读」填写，如有变化请修改 |
 | 缓存命中率 `6%` | `index.html` 中 3 处 `6%` | 彩蛋数字，可改成任意值 |
 | 标题与描述 | `index.html` 的 `<title>`、`meta description`、`og:*` | 影响分享卡片与搜索摘要 |
 
-> `hi@yan.dev` 只是示例域名。发布前一定要换成你能收信的地址，否则访客会发到不存在的地方。
+> 联系邮箱已替换为 `3059673932@qq.com`。
 
 ---
 
